@@ -1,7 +1,7 @@
 "use client";
 import { useAccount, useWriteContract } from "wagmi";
 import { goalPledgeEscrowAbi } from "../lib/abi";
-import { BASE_SEPOLIA_CHAIN_ID, GOAL_PLEDGE_ESCROW_ADDRESS } from "../lib/contracts";
+import { BASE_MAINNET_CHAIN_ID, GOAL_PLEDGE_ESCROW_ADDRESS } from "../lib/contracts";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Gift } from "lucide-react";
 
@@ -46,7 +46,7 @@ export default function GoalActions({ goalId, owner, deadline, completed, claime
   const canMarkComplete = isOwner && !completed && !isPastDeadline;
   const canClaim = isOwner && completed && !claimed;
 
-  const disabled = chainId !== BASE_SEPOLIA_CHAIN_ID || isPending;
+  const disabled = chainId !== BASE_MAINNET_CHAIN_ID || isPending;
 
   return (
     <div className="flex flex-col sm:flex-row gap-2">

@@ -5,7 +5,7 @@ import { parseUnits } from "viem";
 import { Plus, ShieldCheck, CheckCircle } from "lucide-react";
 import { erc20Abi, goalPledgeEscrowAbi } from "../lib/abi";
 import {
-  BASE_SEPOLIA_CHAIN_ID,
+  BASE_MAINNET_CHAIN_ID,
   GOAL_PLEDGE_ESCROW_ADDRESS,
   USDC_ADDRESS,
   USDC_DECIMALS,
@@ -82,7 +82,7 @@ export default function CreateGoalDialog({ onCreated }: Props) {
   }, [allowance, amount]);
 
   const disabled =
-    !address || chainId !== BASE_SEPOLIA_CHAIN_ID || !amount || !deadline || !title.trim();
+    !address || chainId !== BASE_MAINNET_CHAIN_ID || !amount || !deadline || !title.trim();
 
   async function onApprove() {
     if (!amount) return;
@@ -110,7 +110,7 @@ export default function CreateGoalDialog({ onCreated }: Props) {
     })) as unknown as bigint;
     // Best-effort local metadata persistence
     upsertGoalMeta(
-      BASE_SEPOLIA_CHAIN_ID,
+      BASE_MAINNET_CHAIN_ID,
       GOAL_PLEDGE_ESCROW_ADDRESS,
       BigInt(goalId),
       { title, notes },

@@ -3,7 +3,7 @@ import { useMemo} from "react";
 import { useAccount, useReadContract, useReadContracts, useWriteContract } from "wagmi";
 import { goalPledgeEscrowAbi } from "../lib/abi";
 import {
-  BASE_SEPOLIA_CHAIN_ID,
+  BASE_MAINNET_CHAIN_ID,
   GOAL_PLEDGE_ESCROW_ADDRESS,
   USDC_DECIMALS,
 } from "../lib/contracts";
@@ -55,7 +55,7 @@ export default function GoalsList({ refreshKey }: { refreshKey?: number }) {
   }
 
   const metas = useMemo(
-    () => getLocalMeta(BASE_SEPOLIA_CHAIN_ID, GOAL_PLEDGE_ESCROW_ADDRESS),
+    () => getLocalMeta(BASE_MAINNET_CHAIN_ID, GOAL_PLEDGE_ESCROW_ADDRESS),
     [],
   );
 
@@ -106,16 +106,16 @@ export default function GoalsList({ refreshKey }: { refreshKey?: number }) {
             </CardContent>
           </Card>
         )}
-        {address && chainId !== BASE_SEPOLIA_CHAIN_ID && (
+        {address && chainId !== BASE_MAINNET_CHAIN_ID && (
           <Card>
             <CardContent className="pt-6">
               <p className="text-center text-muted-foreground">
-                Please switch to Base Sepolia network.
+                Please switch to Base Mainnet network.
               </p>
             </CardContent>
           </Card>
         )}
-        {address && chainId === BASE_SEPOLIA_CHAIN_ID && (
+        {address && chainId === BASE_MAINNET_CHAIN_ID && (
           <Tabs defaultValue="upcoming" className="w-full">
             <div className="rounded-md bg-gray-100 p-1">
               <TabsList className="grid w-full grid-cols-3 bg-transparent p-0">
