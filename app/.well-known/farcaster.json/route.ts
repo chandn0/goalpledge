@@ -4,9 +4,9 @@ export async function GET() {
 
   const manifest = {
     accountAssociation: {
-      header: "",
-      payload: "",
-      signature: "",
+      header: "eyJmaWQiOjIwNDk1LCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4NDQyMTcwMGI3M2I3YjUyOEE1YWIzODYyMkIxZGNlODgwRGY5YjBDNiJ9",
+      payload: "eyJkb21haW4iOiJnb2FscGxlZGdlLnZlcmNlbC5hcHAifQ",
+      signature: "MHhlYjZlMTJiOTliYmQyOGZkNDc5YTRiZTlmY2M1NTJmZDRjMTBlNGI1ZjQ1Y2UwMGY4OGRiYTI5ZjNmMDE1ODBlNmUyNDRiZTE5ZTAzY2MzMTRjYjEyZTE1MjczMDI4MWExYzZkYmQxMzU1YjJkMzNhYTRkYjY2NDMzYjQ1MTk2OTFi",
     },
     baseBuilder: {
       allowedAddresses: [""],
@@ -23,6 +23,7 @@ export async function GET() {
       screenshotUrls: [
         `${appUrl}/s1.png`,
         `${appUrl}/s2.png`,
+
       ],
       primaryCategory: "social",
       tags: ["goals", "miniapp", "baseapp"],
