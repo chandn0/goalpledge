@@ -110,6 +110,15 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+            <div>
+              <a href="https://github.com/chandn0/goalpledge" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a href="https://basescan.org/address/0x7373770ffc99c7a51fd429aa0bd357cdb8a325fc#code" target="_blank" rel="noopener noreferrer">
+                contract on BaseScan
+              </a>
+            </div>
         </main>
       </div>
     );
