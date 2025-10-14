@@ -39,17 +39,13 @@ export default function Home() {
               Set a goal, choose a deadline, and pledge USDC to keep yourself accountable.
             </p>
             <div className="flex justify-center">
-              <Wallet>
-                <Button size="lg" className="w-full sm:w-auto min-w-[200px] py-4 text-lg font-semibold shadow-lg">
-                  Get Started →
-                </Button>
-              </Wallet>
+              <Wallet />
             </div>
           </div>
 
           {/* How It Works Section */}
           <section className="mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">💡 How It Works</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">How It Works</h3>
             <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <Card className="p-4 sm:p-6">
                 <div className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">1. Set a Goal</div>
@@ -87,7 +83,7 @@ export default function Home() {
 
           {/* Examples Section */}
           <section className="mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">🎯 Examples</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center"> Examples</h3>
             <div className="grid gap-2 sm:gap-3 sm:grid-cols-2">
               <Card className="p-3 sm:p-4 border-l-4 border-l-primary">
                 <p className="text-sm sm:text-base font-medium">&quot;Run 5km every day for 30 days&quot;</p>
@@ -111,11 +107,7 @@ export default function Home() {
               <p className="text-base sm:text-lg mb-1 sm:mb-2">Stop planning — start proving.</p>
               <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">Set your goal today and stake your USDC.</p>
               <div className="flex justify-center">
-                <Wallet>
-                  <Button size="lg" className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 w-full sm:w-auto">
-                    Create a Goal →
-                  </Button>
-                </Wallet>
+                <Wallet />
               </div>
             </div>
           </section>
@@ -128,7 +120,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Mobile-first header */}
-      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-40 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-2">
             <Target className="h-6 w-6 text-primary" />
