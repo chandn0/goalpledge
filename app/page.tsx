@@ -7,7 +7,6 @@ import { useAccount } from "wagmi";
 import CreateGoalDialog from "./components/CreateGoalDialog";
 import GoalsList from "./components/GoalsList";
 import TotalPledgeCard from "./components/TotalPledgeCard";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 export default function Home() {
