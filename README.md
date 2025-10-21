@@ -1,8 +1,20 @@
+# GoalPledge
 
+GoalPledge is a motivational to-do list application designed to help you achieve your goals by adding a financial stake to your tasks.
 
-The application provides a simple and clean interface to manage your daily and future tasks, helping you to stay organized and motivated.
+## How it works
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain`](https://www.npmjs.com/package/create-onchain).
+- **Set Your Goals:** Create tasks and set deadlines for what you want to accomplish.
+- **Stake Your USDC:** For each task, you stake an amount of USDC. This amount is held in escrow as your commitment to the goal.
+- **Complete on Time:** Mark your goal as complete before the deadline.
+- **Claim Your Stake:** Once a goal is successfully completed on time, your staked USDC is released back to you.
+- **Track Your Progress:** The app organizes your tasks by date, showing you what's "Upcoming". You can also view your "Completed" and "Missed" tasks.
+- **Stay Motivated:** The total staked amount is always visible, reminding you of what's on the line.
+
+The smart contract is deployed at Base and verified on Basescan: https://basescan.org/address/0x7373770ffc99c7a51fd429aa0bd357cdb8a325fc#code
+
+Smart contract & deployment code is full public here: https://github.com/chandn0/smartcontracts
+
 
 
 ## Getting Started
@@ -11,33 +23,11 @@ First, install dependencies:
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
 Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-
-## Learn More
-
-To learn more about OnchainKit, see our [documentation](https://docs.base.org/onchainkit).
-
-To learn more about Next.js, see the [Next.js documentation](https://nextjs.org/docs).
