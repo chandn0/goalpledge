@@ -15,8 +15,6 @@ The smart contract is deployed at Base and verified on Basescan: https://basesca
 
 Smart contract & deployment code is full public here: https://github.com/chandn0/smartcontracts
 
-
-
 ## Getting Started
 
 First, install dependencies:

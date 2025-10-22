@@ -52,10 +52,10 @@ export default function TotalPledgeCard({ refreshKey }: { refreshKey?: number })
   return (
     <div className="mb-6 text-center">
       
-      <p className="text-2xl font-bold">
+      <p className="text-2xl sm:text-3xl font-bold">
         {formatUnits(totalPledged, USDC_DECIMALS)}$
       </p>
-      <h3 className="text-md font-medium text-gray-400">Pledged</h3>
+      <p className="text-sm sm:text-base font-medium text-gray-500">Pledged</p>
       {/* <p className="text-xs text-muted-foreground">
         Across {(ids as bigint[] | undefined)?.length ?? 0} goals
       </p> */}

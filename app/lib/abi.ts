@@ -29,6 +29,18 @@ export const erc20Abi = [
 ] as const;
 
 export const goalPledgeEscrowAbi = [
+  // Constructor
+  {
+    type: 'constructor',
+    inputs: [
+      { name: 'usdcAddress', type: 'address' },
+      { name: 'treasuryAddress', type: 'address' },
+      { name: 'minBufferSeconds', type: 'uint64' },
+    ],
+    stateMutability: 'nonpayable',
+  },
+
+  // === EXISTING GOAL FUNCTIONS ===
   {
     type: 'function',
     name: 'createGoal',
@@ -91,6 +103,200 @@ export const goalPledgeEscrowAbi = [
       },
     ],
   },
+
+  // === NEW BENEFICIARY FUNCTIONS ===
+  {
+    type: 'function',
+    name: 'setBeneficiary',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'beneficiary', type: 'address' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'clearBeneficiary',
+    stateMutability: 'nonpayable',
+    inputs: [],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'getBeneficiary',
+    stateMutability: 'view',
+    inputs: [{ name: 'user', type: 'address' }],
+    outputs: [{ type: 'address' }],
+  },
+  {
+    type: 'function',
+    name: 'userBeneficiaries',
+    stateMutability: 'view',
+    inputs: [{ name: 'user', type: 'address' }],
+    outputs: [{ type: 'address' }],
+  },
+
+  // === NEW CHALLENGE FUNCTIONS ===
+  {
+    type: 'function',
+    name: 'createChallenge',
+    stateMutability: 'nonpayable',
+    inputs: [
+      { name: 'description', type: 'string' },
+      { name: 'entryFee', type: 'uint128' },
+      { name: 'startTime', type: 'uint64' },
+      { name: 'deadline', type: 'uint64' },
+      { name: 'goal', type: 'string' },
+    ],
+    outputs: [{ name: 'challengeId', type: 'uint256' }],
+  },
+  {
+    type: 'function',
+    name: 'joinChallenge',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'markChallengeComplete',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'resolveChallenge',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [],
+  },
+  {
+    type: 'function',
+    name: 'claimChallengeWinnings',
+    stateMutability: 'nonpayable',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [],
+  },
+
+  // === CHALLENGE GETTER FUNCTIONS ===
+  {
+    type: 'function',
+    name: 'getUserChallenges',
+    stateMutability: 'view',
+    inputs: [{ name: 'user', type: 'address' }],
+    outputs: [{ type: 'uint256[]' }],
+  },
+  {
+    type: 'function',
+    name: 'getChallenge',
+    stateMutability: 'view',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [
+      {
+        type: 'tuple',
+        components: [
+          { name: 'creator', type: 'address' },
+          { name: 'description', type: 'string' },
+          { name: 'entryFee', type: 'uint128' },
+          { name: 'startTime', type: 'uint64' },
+          { name: 'deadline', type: 'uint64' },
+          { name: 'totalParticipants', type: 'uint256' },
+          { name: 'winners', type: 'uint256' },
+          { name: 'resolved', type: 'bool' },
+          { name: 'goal', type: 'string' },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'function',
+    name: 'getChallengeParticipants',
+    stateMutability: 'view',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [
+      {
+        type: 'tuple[]',
+        components: [
+          { name: 'user', type: 'address' },
+          { name: 'stake', type: 'uint128' },
+          { name: 'completed', type: 'bool' },
+          { name: 'claimed', type: 'bool' },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'function',
+    name: 'getChallengeParticipant',
+    stateMutability: 'view',
+    inputs: [
+      { name: 'challengeId', type: 'uint256' },
+      { name: 'user', type: 'address' },
+    ],
+    outputs: [
+      {
+        type: 'tuple',
+        components: [
+          { name: 'user', type: 'address' },
+          { name: 'stake', type: 'uint128' },
+          { name: 'completed', type: 'bool' },
+          { name: 'claimed', type: 'bool' },
+        ],
+      },
+    ],
+  },
+
+  // === STORAGE MAPPINGS (for direct access) ===
+  {
+    type: 'function',
+    name: 'challenges',
+    stateMutability: 'view',
+    inputs: [{ name: 'challengeId', type: 'uint256' }],
+    outputs: [
+      { name: 'creator', type: 'address' },
+      { name: 'description', type: 'string' },
+      { name: 'entryFee', type: 'uint128' },
+      { name: 'startTime', type: 'uint64' },
+      { name: 'deadline', type: 'uint64' },
+      { name: 'totalParticipants', type: 'uint256' },
+      { name: 'winners', type: 'uint256' },
+      { name: 'resolved', type: 'bool' },
+      { name: 'goal', type: 'string' },
+    ],
+  },
+  {
+    type: 'function',
+    name: 'challengeParticipants',
+    stateMutability: 'view',
+    inputs: [
+      { name: 'challengeId', type: 'uint256' },
+      { name: 'index', type: 'uint256' },
+    ],
+    outputs: [
+      { name: 'user', type: 'address' },
+      { name: 'stake', type: 'uint128' },
+      { name: 'completed', type: 'bool' },
+      { name: 'claimed', type: 'bool' },
+    ],
+  },
+  {
+    type: 'function',
+    name: 'userChallengeIndex',
+    stateMutability: 'view',
+    inputs: [
+      { name: 'challengeId', type: 'uint256' },
+      { name: 'user', type: 'address' },
+    ],
+    outputs: [{ type: 'uint256' }],
+  },
+  {
+    type: 'function',
+    name: 'nextChallengeId',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ type: 'uint256' }],
+  },
+
+  // === EXISTING SYSTEM FUNCTIONS ===
   {
     type: 'function',
     name: 'minDeadlineBuffer',
@@ -98,6 +304,29 @@ export const goalPledgeEscrowAbi = [
     inputs: [],
     outputs: [{ type: 'uint64' }],
   },
+  {
+    type: 'function',
+    name: 'treasury',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ type: 'address' }],
+  },
+  {
+    type: 'function',
+    name: 'usdc',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ type: 'address' }],
+  },
+  {
+    type: 'function',
+    name: 'owner',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ type: 'address' }],
+  },
+
+  // === EVENTS ===
   {
     type: 'event',
     name: 'GoalCreated',
@@ -109,6 +338,92 @@ export const goalPledgeEscrowAbi = [
       { name: 'description', type: 'string', indexed: false },
     ],
   },
+  {
+    type: 'event',
+    name: 'GoalCompleted',
+    inputs: [
+      { name: 'goalId', type: 'uint256', indexed: true },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'StakeClaimed',
+    inputs: [
+      { name: 'goalId', type: 'uint256', indexed: true },
+      { name: 'owner', type: 'address', indexed: true },
+      { name: 'amount', type: 'uint256', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'StakeForfeited',
+    inputs: [
+      { name: 'goalId', type: 'uint256', indexed: true },
+      { name: 'recipient', type: 'address', indexed: true },
+      { name: 'amount', type: 'uint256', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'BeneficiarySet',
+    inputs: [
+      { name: 'user', type: 'address', indexed: true },
+      { name: 'beneficiary', type: 'address', indexed: true },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'BeneficiaryCleared',
+    inputs: [
+      { name: 'user', type: 'address', indexed: true },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'ChallengeCreated',
+    inputs: [
+      { name: 'challengeId', type: 'uint256', indexed: true },
+      { name: 'creator', type: 'address', indexed: true },
+      { name: 'description', type: 'string', indexed: false },
+      { name: 'entryFee', type: 'uint128', indexed: false },
+      { name: 'startTime', type: 'uint64', indexed: false },
+      { name: 'deadline', type: 'uint64', indexed: false },
+      { name: 'goal', type: 'string', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'ChallengeJoined',
+    inputs: [
+      { name: 'challengeId', type: 'uint256', indexed: true },
+      { name: 'participant', type: 'address', indexed: true },
+      { name: 'stake', type: 'uint128', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'ChallengeGoalCompleted',
+    inputs: [
+      { name: 'challengeId', type: 'uint256', indexed: true },
+      { name: 'participant', type: 'address', indexed: true },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'ChallengeResolved',
+    inputs: [
+      { name: 'challengeId', type: 'uint256', indexed: true },
+      { name: 'winners', type: 'uint256', indexed: false },
+      { name: 'totalPayout', type: 'uint256', indexed: false },
+    ],
+  },
+  {
+    type: 'event',
+    name: 'ChallengeWinningsClaimed',
+    inputs: [
+      { name: 'challengeId', type: 'uint256', indexed: true },
+      { name: 'winner', type: 'address', indexed: true },
+      { name: 'amount', type: 'uint256', indexed: false },
+    ],
+  },
 ] as const;
-
-
