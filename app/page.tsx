@@ -267,7 +267,7 @@ export default function Home() {
               GitHub <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <span className="text-gray-300">•</span>
-            <a href="https://basescan.org/address/0x5b73C5498c1E3b4dbA84de0F1833c4a029d90519#code" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-700 transition-colors font-medium group">
+            <a href="https://basescan.org/address/0xedcd311ca3ad735f3245fac724d9d5714845b761" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-700 transition-colors font-medium group">
               View Contract <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
